@@ -105,3 +105,22 @@ a {
     color-scheme: dark;
   }
 }
+
+.mmItem {
+  transition: 200ms ease-in;
+  -webkit-transition: 200ms ease-in;
+  -moz-transition: 200ms ease-in;
+  -ms-transition: 200ms ease-in;
+  -o-transition: 200ms ease-in;
+  cursor: pointer;
+  color: gray
+}
+
+.mmItem:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  color: white;
+}
