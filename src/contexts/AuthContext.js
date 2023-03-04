@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
 
   async function login(email, password) {
     // TODO: log in
-    const res = await axios.post("http://phone-acc.netlify.app/api/login", {
+    const res = await axios.post("https://phone-acc.netlify.app/api/login", {
       email: email,
       password: password,
     });
@@ -91,7 +91,7 @@ export function AuthProvider({ children }) {
 
   async function addProduct(product) {
     const res = await axios.post(
-      "http://phone-acc.netlify.app/api/manageProducts",
+      "https://phone-acc.netlify.app/api/manageProducts",
       {
         ...product,
         operation: "add",
@@ -137,7 +137,7 @@ export function AuthProvider({ children }) {
 
   async function editProduct(product, newProduct) {
     const res = await axios.post(
-      "http://phone-acc.netlify.app/api/manageProducts",
+      "https://phone-acc.netlify.app/api/manageProducts",
       {
         oldProduct: product,
         newProduct: newProduct,
@@ -192,7 +192,7 @@ export function AuthProvider({ children }) {
 
   async function deleteProduct(product) {
     const res = await axios.post(
-      "http://phone-acc.netlify.app/api/manageProducts",
+      "https://phone-acc.netlify.app/api/manageProducts",
       {
         productId: product._id,
         operation: "delete",
@@ -204,7 +204,7 @@ export function AuthProvider({ children }) {
 
   async function addMember(member) {
     const res = await axios.post(
-      "http://phone-acc.netlify.app/api/manageUsers",
+      "https://phone-acc.netlify.app/api/manageUsers",
       {
         ...member,
         operation: "add",
@@ -260,7 +260,7 @@ export function AuthProvider({ children }) {
       if (newMember[i].length <= 1 && i != "permissions") delete newMember[i];
     }
     const res = await axios.post(
-      "http://phone-acc.netlify.app/api/manageUsers",
+      "https://phone-acc.netlify.app/api/manageUsers",
       {
         oldUser: member,
         newUser: newMember,
@@ -315,7 +315,7 @@ export function AuthProvider({ children }) {
 
   async function deleteMember(member) {
     const res = await axios.post(
-      "http://phone-acc.netlify.app/api/manageUsers",
+      "https://phone-acc.netlify.app/api/manageUsers",
       {
         userEmail: member.email,
         operation: "delete",
@@ -327,7 +327,7 @@ export function AuthProvider({ children }) {
 
   async function refreshProducts() {
     return await axios
-      .get("http://phone-acc.netlify.app/api/manageProducts")
+      .get("https://phone-acc.netlify.app/api/manageProducts")
       .then((re) => {
         setProducts(re.data);
         return re.data;
@@ -340,7 +340,7 @@ export function AuthProvider({ children }) {
 
   async function refreshMembers() {
     return await axios
-      .get("http://phone-acc.netlify.app/api/manageUsers")
+      .get("https://phone-acc.netlify.app/api/manageUsers")
       .then((re) => {
         setMembers(re.data);
         return re.data;
@@ -371,7 +371,7 @@ export function AuthProvider({ children }) {
   }
 
   async function addSoldItem(soldItem) {
-    const res = await axios.post("http://phone-acc.netlify.app/api/sold", {
+    const res = await axios.post("https://phone-acc.netlify.app/api/sold", {
       ...soldItem,
       operation: "add",
       email: currentUser.email,
