@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
 
   async function login(email, password) {
     // TODO: log in
-    const res = await axios.post("http://localhost:3000/api/login", {
+    const res = await axios.post("http://phone-acc.netlify.app/api/login", {
       email: email,
       password: password,
     });
@@ -90,11 +90,14 @@ export function AuthProvider({ children }) {
   }
 
   async function addProduct(product) {
-    const res = await axios.post("http://localhost:3000/api/manageProducts", {
-      ...product,
-      operation: "add",
-      email: currentUser.email,
-    });
+    const res = await axios.post(
+      "http://phone-acc.netlify.app/api/manageProducts",
+      {
+        ...product,
+        operation: "add",
+        email: currentUser.email,
+      }
+    );
 
     switch (res.status) {
       case 200:
@@ -133,12 +136,15 @@ export function AuthProvider({ children }) {
   }
 
   async function editProduct(product, newProduct) {
-    const res = await axios.post("http://localhost:3000/api/manageProducts", {
-      oldProduct: product,
-      newProduct: newProduct,
-      operation: "edit",
-      adminEmail: currentUser.email,
-    });
+    const res = await axios.post(
+      "http://phone-acc.netlify.app/api/manageProducts",
+      {
+        oldProduct: product,
+        newProduct: newProduct,
+        operation: "edit",
+        adminEmail: currentUser.email,
+      }
+    );
 
     switch (res.status) {
       case 200:
@@ -185,20 +191,26 @@ export function AuthProvider({ children }) {
   }
 
   async function deleteProduct(product) {
-    const res = await axios.post("http://localhost:3000/api/manageProducts", {
-      productId: product._id,
-      operation: "delete",
-      adminEmail: currentUser.email,
-    });
+    const res = await axios.post(
+      "http://phone-acc.netlify.app/api/manageProducts",
+      {
+        productId: product._id,
+        operation: "delete",
+        adminEmail: currentUser.email,
+      }
+    );
     refreshProducts();
   }
 
   async function addMember(member) {
-    const res = await axios.post("http://localhost:3000/api/manageUsers", {
-      ...member,
-      operation: "add",
-      adminEmail: currentUser.email,
-    });
+    const res = await axios.post(
+      "http://phone-acc.netlify.app/api/manageUsers",
+      {
+        ...member,
+        operation: "add",
+        adminEmail: currentUser.email,
+      }
+    );
 
     switch (res.status) {
       case 200:
@@ -247,12 +259,15 @@ export function AuthProvider({ children }) {
     for (let i in newMember) {
       if (newMember[i].length <= 1 && i != "permissions") delete newMember[i];
     }
-    const res = await axios.post("http://localhost:3000/api/manageUsers", {
-      oldUser: member,
-      newUser: newMember,
-      operation: "edit",
-      adminEmail: currentUser.email,
-    });
+    const res = await axios.post(
+      "http://phone-acc.netlify.app/api/manageUsers",
+      {
+        oldUser: member,
+        newUser: newMember,
+        operation: "edit",
+        adminEmail: currentUser.email,
+      }
+    );
 
     switch (res.status) {
       case 200:
@@ -299,17 +314,20 @@ export function AuthProvider({ children }) {
   }
 
   async function deleteMember(member) {
-    const res = await axios.post("http://localhost:3000/api/manageUsers", {
-      userEmail: member.email,
-      operation: "delete",
-      adminEmail: currentUser.email,
-    });
+    const res = await axios.post(
+      "http://phone-acc.netlify.app/api/manageUsers",
+      {
+        userEmail: member.email,
+        operation: "delete",
+        adminEmail: currentUser.email,
+      }
+    );
     refreshMembers();
   }
 
   async function refreshProducts() {
     return await axios
-      .get("http://localhost:3000/api/manageProducts")
+      .get("http://phone-acc.netlify.app/api/manageProducts")
       .then((re) => {
         setProducts(re.data);
         return re.data;
@@ -322,7 +340,7 @@ export function AuthProvider({ children }) {
 
   async function refreshMembers() {
     return await axios
-      .get("http://localhost:3000/api/manageUsers")
+      .get("http://phone-acc.netlify.app/api/manageUsers")
       .then((re) => {
         setMembers(re.data);
         return re.data;
@@ -353,7 +371,7 @@ export function AuthProvider({ children }) {
   }
 
   async function addSoldItem(soldItem) {
-    const res = await axios.post("http://localhost:3000/api/sold", {
+    const res = await axios.post("http://phone-acc.netlify.app/api/sold", {
       ...soldItem,
       operation: "add",
       email: currentUser.email,
