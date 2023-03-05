@@ -124,3 +124,11 @@ a {
   -o-transform: scale(1.05);
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  .mmItem {
+    margin: 10px 10px;
+    text-align: center;
+    padding: 50px !important;
+  }
+}
